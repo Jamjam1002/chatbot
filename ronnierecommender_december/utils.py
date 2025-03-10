@@ -11,12 +11,20 @@ import time
 load_dotenv()
 
 
-def load_config(file_path = "config.yaml"):
+def load_config():
+    # Get the absolute path of the current script
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "config.yaml")
+
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Config file not found: {file_path}")
+
+    # Load YAML config
     with open(file_path, "r") as f:
         return yaml.safe_load(f)
-    
-config = load_config()
 
+config = load_config()
 
 def convert_ns_to_seconds(ns_value):
     return ns_value / 1_000_000_000 
