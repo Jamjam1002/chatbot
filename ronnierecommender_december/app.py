@@ -12,8 +12,6 @@ from database_operations import save_text_message, save_image_message, save_audi
 from utils import list_openai_models, list_ollama_models, command
 import sqlite3
 
-st.write("Current working directory:", os.getcwd())
-st.write("Files in directory:", os.listdir(os.getcwd()))
 
 # Load configuration
 config = load_config()
